@@ -1,15 +1,12 @@
 # This workflow will initiate a Veracode Static Analysis Pipeline scan, return a results.json and convert to SARIF for upload as a code scanning alert
 
 name: Veracode Static Analysis Pipeline Scan
-
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ main ]
- # schedule:
- #   - cron: '24 23 * * *'
+  workflow_run:
+    workflows: ["Build Docker Image"]
+    branches: [main]
+    types: 
+      - completed
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
