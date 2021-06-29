@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: spring-boot-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-app
+  template:
+    metadata:
+      labels:
+        app: spring-boot-app
+    spec:
+      containers:
+        - name: spring-boot-app
+          image: deepakindocker/testapplication
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8090
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-boot-app
+spec:
+  type: NodePort
+  ports:
+    - port: 8090
+      targetPort: 8090
+      protocol: TCP
+      nodePort: 31000
+  selector:
+    app: spring-boot-app
