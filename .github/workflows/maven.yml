@@ -6,8 +6,12 @@ on:
   #pull_request:
   #  branches: [ main ]
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name'
+        required: true
+        default: 'Deepak'
   repository_dispatch: 
-
 jobs:
   maven_build:
     name: Maven Build
