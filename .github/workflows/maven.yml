@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Get Verion
         run: |
-          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" pom.xml)
+          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" <pom.xml)
           echo "::set-output name=version::$VERSION"       
         id: get_version
       - name: Show extracted Maven project version
