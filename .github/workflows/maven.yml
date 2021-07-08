@@ -14,8 +14,17 @@ jobs:
     steps:
       - name: Test Parameter Variable
         run: 'echo ${{github.event.inputs.name}}'
+      - name: Install XML
+        run: apt-get install libxml-xpath-perl
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Get Verion
+        run:  |
+          VERSION1=$(xpath pom.xml '/project/version/text()')
+          echo "::set-output name=version::$VERSION1"
+        id: get_version1
+      - name: Show extracted Maven project version
+        run: echo ${{ steps.get_version1.outputs.version }}     
       - name: Get Version
         run : |
           VERSION=$( grep -oP '(?<=<version>).*(?=</version)' pom.xml )
