@@ -13,15 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test Parameter Variable
-        run: 'echo ${{github.event.inputs.name}}'
-      - name: Install XML
-        run: sudo apt-get install libxml-xpath-perl
+        run: 'echo ${{github.event.inputs.name}}'      
       - name: Checkout
         uses: actions/checkout@v2
       - name: Get Verion
-        run:  |
-          VERSION=$(xpath '/project/version/text()' pom.xml)
-          echo "::set-output name=version::$VERSION"
+        run: |
+          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" pom.xml)
+          echo "::set-output name=version::$VERSION"       
         id: get_version
       - name: Show extracted Maven project version
         run: echo ${{ steps.get_version.outputs.version }}     
