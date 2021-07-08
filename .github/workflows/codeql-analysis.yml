@@ -12,11 +12,8 @@
 name: "CodeQL"
 
 on:
-  workflow_run:
-    workflows: ["Build Docker Image"]
-    branches: [main]
-    types: 
-      - completed
+  workflow_dispatch:
+  repository_dispatch: 
 
 jobs:
   analyze:
