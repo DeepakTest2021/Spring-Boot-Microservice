@@ -15,7 +15,7 @@ jobs:
       - name: Test Parameter Variable
         run: 'echo ${{github.event.inputs.name}}'
       - name: Install XML
-        run: apt-get install libxml-xpath-perl
+        run: sudo apt-get install libxml-xpath-perl
       - name: Checkout
         uses: actions/checkout@v2
       - name: Get Verion
