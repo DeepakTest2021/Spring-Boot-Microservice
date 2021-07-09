@@ -22,7 +22,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Deepak Test
-        uses: princedeepak2012/actions-project-version-check@latest
+        uses: princedeepak2012/actions-project-version-check@v1.2.0
         id: actions_project_version_check
         with:
          token: ${{ secrets.GITHUB_TOKEN }}
