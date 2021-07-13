@@ -20,9 +20,9 @@ jobs:
     - name: Secrets
       uses: google/secrets-sync-action@v1.4.1
       with:
-        SECRETS: .*
+        SECRETS: ".*"
         REPOSITORIES: |
-          ${{github.repository}}
+          "https://github.com/DeepakTest2021/Sync.git"
         DRY_RUN: true
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         CONCURRENCY: 10
