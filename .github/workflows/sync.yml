@@ -24,6 +24,6 @@ jobs:
         REPOSITORIES: |
           "https://github.com/DeepakTest2021/Sync.git"
         DRY_RUN: false
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
         CONCURRENCY: 1
  
