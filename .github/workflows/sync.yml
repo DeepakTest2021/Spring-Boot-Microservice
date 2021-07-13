@@ -16,11 +16,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      
-    - name: Secrets Sync Action 
+    
+    - name: Secrets
       uses: google/secrets-sync-action@v1.4.1
       with:
-       # Token to use to get repos and write secrets
-        github_token: ${{secrets.TOKEN}}
-        repositories: true  
-        dry_run: true 
+        SECRETS: .*
+        REPOSITORIES: |
+          ${{github.repository}}
+        DRY_RUN: true
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        CONCURRENCY: 10
+ 
