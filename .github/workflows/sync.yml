@@ -21,6 +21,6 @@ jobs:
       uses: google/secrets-sync-action@v1.4.1
       with:
        # Token to use to get repos and write secrets
-        github_token: ${{secrets.GITHUB_TOKEN_REPO}}
+        github_token: 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
         repositories: true  
         dry_run: true 
